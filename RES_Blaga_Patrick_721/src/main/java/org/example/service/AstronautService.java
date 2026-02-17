@@ -31,4 +31,13 @@ public class AstronautService {
                 .sorted(Comparator.comparingInt(Astronaut::getExperienceLevel).reversed().thenComparing(Comparator.comparing(Astronaut::getName)))
                 .toList();
     }
+    public void writeSorted(String f){
+        List<Astronaut> astronauts = sortByExpThenName();
+        String result="";
+        for(Astronaut a:astronauts){
+            result+=a.toString()+"\n";
+        }
+        repo.writeToTxt(result,f);
+    }
+
 }

@@ -33,6 +33,12 @@ public class Main {
         controller.showFiltereAstronauts(sc.nextLine());
         System.out.println();
         controller.showSortAstronauts();
+        controller.writeToTxt();
+        System.out.println();
+        controller.showTop5Events();
+        controller.totalScore();
+        controller.getLeadingSpacecraft();
+        controller.writeMap();
 
 
     }

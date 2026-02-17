@@ -6,15 +6,17 @@ public class Astronaut {
     private String spacecraft;
     private AstronautStatus status;
     private int experienceLevel;
+    private int totalScore;
 
     public Astronaut(){}
 
-    public Astronaut(int id, String name, String spacecraft, AstronautStatus status, int experienceLevel) {
+    public Astronaut(int id, String name, String spacecraft, AstronautStatus status, int experienceLevel, int totalScore) {
         this.id = id;
         this.name = name;
         this.spacecraft = spacecraft;
         this.status = status;
         this.experienceLevel = experienceLevel;
+        this.totalScore = totalScore;
     }
 
     public int getId() {
@@ -55,6 +57,14 @@ public class Astronaut {
 
     public void setExperienceLevel(int experienceLevel) {
         this.experienceLevel = experienceLevel;
+    }
+
+    public int getTotalScore() {
+        return totalScore;
+    }
+
+    public void setTotalScore(int totalScore) {
+        this.totalScore = totalScore;
     }
 
     @Override

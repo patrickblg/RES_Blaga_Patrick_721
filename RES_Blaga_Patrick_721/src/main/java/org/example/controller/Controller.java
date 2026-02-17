@@ -29,8 +29,11 @@ public class Controller {
         astronauts.forEach(System.out::println);
     }
     public void showFiltereAstronauts(String spacecraft){
-        List<Astronaut> astronauts= astronautService.filterBySpacecraftAndStatus(spacecraft);
-        astronauts.forEach(System.out::println);
+        astronautService.filterBySpacecraftAndStatus(spacecraft).forEach(System.out::println);
 
+    }
+
+    public void showSortAstronauts(){
+        astronautService.sortByExpThenName().forEach(System.out::println);
     }
 }

@@ -10,8 +10,13 @@ import org.example.service.AstronautService;
 import org.example.service.MissionEventService;
 import org.example.service.SupplyService;
 
+import java.util.Scanner;
+
 public class Main {
     static void main() {
+
+        Scanner sc = new Scanner(System.in);
+
         InFileRepo<Astronaut> astronautInFileRepo = new InFileRepo<>("C:\\Users\\blaga\\Desktop\\MAP\\RES_Blaga_Patrick_7211\\RES_Blaga_Patrick_721\\src\\main\\resources\\astronauts.json",Astronaut[].class);
         InFileRepo<MissionEvent> missionEventInFileRepo = new InFileRepo<>("C:\\Users\\blaga\\Desktop\\MAP\\RES_Blaga_Patrick_7211\\RES_Blaga_Patrick_721\\src\\main\\resources\\events.json",MissionEvent[].class);
         InFileRepo<Supply> supplyInFileRepo = new InFileRepo<>("C:\\Users\\blaga\\Desktop\\MAP\\RES_Blaga_Patrick_7211\\RES_Blaga_Patrick_721\\src\\main\\resources\\supplies.json",Supply[].class);
@@ -22,6 +27,13 @@ public class Main {
 
         Controller controller = new  Controller(astronautService, missionEventService, supplyService);
         controller.showCount();
+        System.out.println();
         controller.showAllAstronauts();
+        System.out.println();
+        controller.showFiltereAstronauts(sc.nextLine());
+        System.out.println();
+        controller.showSortAstronauts();
+
+
     }
 }

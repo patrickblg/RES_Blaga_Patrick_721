@@ -1,17 +1,27 @@
 package org.example;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+
+import org.example.controller.Controller;
+import org.example.model.Astronaut;
+import org.example.model.MissionEvent;
+import org.example.model.Supply;
+import org.example.repo.InFileRepo;
+import org.example.service.AstronautService;
+import org.example.service.MissionEventService;
+import org.example.service.SupplyService;
+
 public class Main {
     static void main() {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        IO.println(String.format("Hello and welcome!"));
+        InFileRepo<Astronaut> astronautInFileRepo = new InFileRepo<>("C:\\Users\\blaga\\Desktop\\MAP\\RES_Blaga_Patrick_7211\\RES_Blaga_Patrick_721\\src\\main\\resources\\astronauts.json",Astronaut[].class);
+        InFileRepo<MissionEvent> missionEventInFileRepo = new InFileRepo<>("C:\\Users\\blaga\\Desktop\\MAP\\RES_Blaga_Patrick_7211\\RES_Blaga_Patrick_721\\src\\main\\resources\\events.json",MissionEvent[].class);
+        InFileRepo<Supply> supplyInFileRepo = new InFileRepo<>("C:\\Users\\blaga\\Desktop\\MAP\\RES_Blaga_Patrick_7211\\RES_Blaga_Patrick_721\\src\\main\\resources\\supplies.json",Supply[].class);
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            IO.println("i = " + i);
-        }
+        AstronautService astronautService = new AstronautService(astronautInFileRepo);
+        MissionEventService missionEventService = new MissionEventService(missionEventInFileRepo);
+        SupplyService supplyService = new SupplyService(supplyInFileRepo);
+
+        Controller controller = new  Controller(astronautService, missionEventService, supplyService);
+        controller.showCount();
+        controller.showAllAstronauts();
     }
 }
